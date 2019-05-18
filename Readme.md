@@ -52,8 +52,7 @@ For this project, you need
   * Python
   
 # How to Setup Project ?
-app.js is main app.js
-run this app on command line using following procedure
+Run this app on command line using following procedure
 * step 1. install mongodb.
 * step 2. start mongodb server using command "mongod" on cmd.
 * step 3. install nodejs.
