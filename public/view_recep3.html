@@ -1,0 +1,104 @@
+<!DOCTYPE >
+<html ng-app = "receptionmodule">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="keywords" content="text/html; charset=utf-8" />
+<title>Login Here</title>
+<link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script   src="js/jquery.js"></script>
+  <script   src="js/bootstrap.js"></script>
+
+  
+<script type="text/javascript">
+//   $( document ).ready(function() {
+//     $.ajax({
+//             url: 'http://localhost:3000/insert/details',
+//             type: 'GET',
+//             success : function(data) {
+//                     var txt = '<tr><th id="hello">Name</th>'+
+//                               '<th>CNIC</th>'+
+//                               '<th>Phone</th>'+
+//                               '<th>Address</th>'+
+//                               '<th>Shift Start</th>'+
+//                               '<th>Shift End</th></tr>';
+//                     // myObj = JSON.parse(this.responseText)
+//                     for (x in data) {
+//                       console.log(data)
+//                         txt = txt+'<tr><td>'+ data[x].name +'</td>'+
+//                         '<td>'+ data[x].CNIC +'</td>'+
+//                         '<td>'+ data[x].phone +' </td>'+
+//                         '<td>'+ data[x].address +'</td>'+
+//                         '<td>'+ data[x].start +' </td>'+
+//                         '<td>'+ data[x].end +' </td>'+
+//                         '<td><a href="+data[x].CNIC +" class = "btn btn-primary"></a> </td>'
+//                         '<td><a href="+data[x].CNIC +" class = "btn btn-primary"></a> </td>'
+//                         ;
+//                     }
+                   
+//                     document.getElementById("demo").innerHTML = txt;
+//             }
+//     })
+// });
+    
+</script>
+</head>
+
+<body ng-controller="recController as vm" >
+<nav class="navbar navbar-inverse navbar-fixed-top ">
+  <div class="container-fluid">
+<div class="navbar-header"> 
+<a href="#" class="navbar-brand">RFID Based Utility System for Hotels</a>
+</div>
+
+<ul class="nav navbar-nav navbar-left">
+ 
+  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Admission <span class="caret"></span> </a>
+  <ul class="dropdown-menu">
+  <li><a href="Aplicant_info.php">Applicant Info</a></li>
+  </ul> 
+  </li>
+</ul>
+<a href=""></a>
+ </div>
+</nav>
+
+<div class="row">
+    	
+        <div class="main " >
+          <div class="container">
+            <div class="jum jumbotron  ">
+            <br />
+              <div class="panel panel-primary ">
+              <div class="panel-heading">Receptionist List</div>
+              
+              
+              <div class="panel-body">            
+              <br/>    
+              <div ng-view >
+                <table class="table table-striped" id="demo">
+  
+
+
+
+</table>
+              </div>
+              </div>
+              <div class="panel-footer">
+              <div id="test"></div>             
+              </div>
+             
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>       
+  <script src="../node_modules/angular/angular.js"></script> 
+  <script src="../node_modules/angular-route/angular-route.js"></script>  
+  <script src="angular-app/app.js"></script>
+  <script src="angular-app/Recep.controller.js"></script>
+  
+ 
+</body>
+</html>

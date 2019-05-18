@@ -1,0 +1,102 @@
+ <legend style=" font-size: 120%;"> <strong>Personal Information:</strong></legend>
+          <form name="cus.add_customer"  ng-submit = "cus.add()" >
+            
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="first_name">First name</label>
+                  <input class="form-control" name="first_name" ng-model = "cus.first_name" ng-pattern="/^[a-zA-Z]+$/" ng-minlength="2" ng-maxlength="20"  type="text" placeholder="Enter first name" required>
+            </div>
+             <div ng-show="cus.custom.first_name.$dirty && cus.custom.first_name.$invalid && isSubmitted">
+                    data ins this field in not valid
+                  </div>
+            <div class="col-md-6">
+                  <label for="last_name">Last name</label>
+                  <input class="form-control" name="last_name" ng-pattern="/^[a-zA-Z]+$/" ng-minlength="2" ng-maxlength="20" ng-model="cus.last_name" type="text" placeholder="Enter last name" required>
+            </div>
+             <div ng-show="cus.custom.last_name.$dirty && cus.custom.last_name.$invalid && isSubmitted">
+                    data ins this field in not valid
+                  </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                 <div class="col-md-6">
+              <label for="email">Email address</label>
+              <input class="form-control" name="email" type="email" ng-model = "cus.email" placeholder="Enter email" required>
+            </div>
+             <div ng-show="cus.custom.email.$dirty && cus.custom.email.$invalid && isSubmitted">
+                    data ins this field in not valid
+                  </div>
+            <div class="col-md-6">
+                  <label for="CNIC">CNIC</label>
+                  <input class="form-control" name="CNIC" type="text" ng-model = "cus.CNIC" placeholder="Enter CNIC No." required>
+            </div>
+             
+              </div>
+            </div>
+               
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="examplePhoneNO">Phone No.</label>
+                  <input class="form-control" name="phone" type="tel" ng-model = "cus.phone" placeholder="Enter Phone No." required>
+            </div>
+            <div class="col-md-6">
+                  <label for="exampleAddress">Address</label>
+                  <input class="form-control" name="address" type="text" ng-model = "cus.address" placeholder="Enter Address" required>
+            </div>
+              </div>
+            </div>
+           
+            <br><legend style=" font-size: 120%;"> <strong>Room Allocation</strong></legend>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleshiftStart">Room No.</label>
+                 <select class="form-control" name="room" id="room" ng-model = "cus.room" placeholder="Enter Room Number" >
+                     
+                </select>
+                  
+            </div>
+            <div class="col-md-6">
+                  <label for="exampleShiftEnd">Check In</label>
+                   
+                  <input class="form-control" name="checkin" ng-model = "cus.checkin" type="date"  required>
+            </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+                  <label for="exampleShiftEnd">Check Out</label>
+                  <input class="form-control" name="checkout" ng-model = "cus.checkout" type="date" required>
+            </div>
+            <legend style=" font-size: 120%;"> <strong>Room Service's Access:</strong></legend>
+            <div class="form-group">
+              <div class="form-row">
+                            <div class="col-md-6">
+                  <label for="exampleShiftEnd">AC</label>
+                  <input class="form-control" name="ac" ng-model = "cus.ac" type="text"  required>
+            </div>
+            <div class="col-md-6">
+                  <label for="exampleShiftEnd">Heater</label>
+                <input class="form-control" name="heater" ng-model = "cus.heater" type="text" required>
+            </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleShiftEnd">Refrigerator</label>
+                  <input class="form-control" name="ref" ng-model = "cus.ref" type="text" required>
+            </div>
+            <div class="col-md-6">
+                  <label for="exampleShiftEnd">Lights</label>
+                  <input class="form-control" name="light" ng-model = "cus.lights" type="text"  required>
+            </div>
+              </div>
+            </div>
+            
+            <input type="submit" class="btn btn-primary btn-block " value="Submit" />
+            
+          </form>

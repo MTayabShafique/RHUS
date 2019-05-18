@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Consumption</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+    
+  <!-- <script type="text/javascript" src="node_modules/chartjs/chart.js"></script> -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">RFID Based Utility System for Hotels</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="charts.html">
+            <!-- <i class="fa fa-fw fa-dashboard"></i> -->
+            <span class="nav-link-text">Consumption</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="Add_Receptionist.html">
+            <!-- <i class="fa fa-fw fa-area-chart"></i> -->
+            <span class="nav-link-text">Add Receptionist</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="mana_avail.html">
+            <!-- <i class="fa fa-fw fa-table"></i> -->
+            <span class="nav-link-text">View Room Availability</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="view_recep.html">
+            <!-- <i class="fa fa-fw fa-table"></i> -->
+            <span class="nav-link-text">View Receptionist</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="charts.html" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Consumption</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="navbar.html">Navbar</a>
+            </li>
+            <li>
+              <a href="cards.html">Cards</a>
+            </li>
+          </ul>
+        </li>-->
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Charts</li>
+      </ol>
+      <!-- Area Chart Example-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-bar-chart"></i>Bar Chart</div>
+        <div class="card-body">
+          
+           
+           
+          <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto" ></div>
+          
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-line-chart"></i> Line Chart </div>
+            <div class="card-body">
+               <!-- <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label >Year</label>
+                   <select class="form-control" name="year" id="">
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+           
+          </select>
+            </div>
+            <div class="col-md-6">
+                  <label >Month</label>
+                 <select class="form-control" name="month" id="">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+           
+          </select>
+            </div></div>
+            </div> -->
+              
+                <div id="barchart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          
+          <!-- <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
+            <div class="card-body">
+              <canvas id="myPieChart" width="100%" height="100"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-bar-chart"></i>line char room 100</div>
+        <div class="card-body">
+          
+           
+           
+          <div id="100" style="min-width: 310px; height: 400px; margin: 0 auto" ></div>
+          
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div><div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-bar-chart"></i>line chart room 101</div>
+        <div class="card-body">
+          
+           
+           
+          <div id="101" style="min-width: 310px; height: 400px; margin: 0 auto" ></div>
+          
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © RFID-Based Utility System for Hotels</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-charts.min.js"></script>
+  </div>
+    <script>
+var comp;
+
+  $( document ).ready(function() {
+
+//     var start_time = new Date().getTime();
+//     $.ajax({
+//             url: 'http://localhost:3000/insert/consumpt/101',
+//             type: 'GET',
+//             success : function(data) {
+//               var request_time = new Date().getTime() - start_time;
+//              // var myObj = JSON.parse(this.data);
+//                     // myObj[0].room_no
+//                     for (x in data) {
+//                         energy.push(data[x].energy);
+//                         enlabel.push(data[x].date);
+                        
+//                     }
+//                     console.log(request_time)  
+//     Highcharts.chart('barchart', {
+//     chart: {
+//         type: 'line'
+//     },
+//     title: {
+//         text: 'energy consumption'
+//     },
+//     subtitle: {
+//         text: 'Source: Sensor'
+//     },
+//     xAxis: {
+//         categories: enlabel,
+//         crosshair: true
+//     },
+//     yAxis: {
+//         min: 0,
+//         title: {
+//             text: 'Energy (Joules)'
+//         }
+//     },
+//     tooltip: {
+//         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+//         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//             '<td style="padding:0"><b>{point.y:.1f} Joules</b></td></tr>',
+//         footerFormat: '</table>',
+//         shared: true,
+//         useHTML: true
+//     },
+//     plotOptions: {
+//         column: {
+//             pointPadding: 0.2,
+//             borderWidth: 0
+//         }
+//     },
+//     series: [  {
+//         name: 'Room 101',
+//         data: energy
+
+//     }]
+// });
+//             }
+//     });
+ comp = Highcharts.chart('barchart', {
+     chart: {
+         type: 'area'
+     },
+     title: {
+         text: 'Consumption of Room'
+     },
+     subtitle: {
+         text: 'Source: Current Sensors'
+     },
+     xAxis: {
+         categories:null,
+         crosshair: true
+     },
+     yAxis: {
+         min: 0,
+         title: {
+             text: 'Energy (Joules)'
+         }
+     },
+     tooltip: {
+         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+             '<td style="padding:0"><b>{point.y:.1f} Joules</b></td></tr>',
+         footerFormat: '</table>',
+         shared: true,
+         useHTML: true
+     },
+     plotOptions: {
+         column: {
+             pointPadding: 0.2,
+             borderWidth: 0
+         }
+     },
+     series: null
+ });
+
+  $.ajax({
+            url: 'http://localhost:3000/insert/consumptions',
+            type: 'GET',
+            success : function(data) {
+             // var myObj = JSON.parse(this.data);
+                    // myObj[0].room_no
+                    /*for (x in data) {
+                        energy.push(data[x].energy);
+                        enlabel.push(data[x].date);
+                        // console.log(data[x].date.toLocaleDateString("en-US"));
+                    }*/
+
+                    console.log(data);
+                  var first =  Highcharts.chart('container', {
+
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Consumption Data of Room'
+    },
+    subtitle: {
+        text: 'Source : Sensors'
+    },
+    xAxis: {
+        categories: [data[0]._id.room,+data[1]._id.room]
+                                                                            
+    },
+
+    yAxis: {
+        title: {
+            text: 'Energy (joules/)'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+     plotOptions: {
+        line: {
+          animation : false,
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        },
+        series: {
+            animation : false,
+            cursor: 'pointer',
+            point: {
+                events: {
+                    click: function () {
+                            roomg(this.category,this.value)
+                            Rooms(this.category,this.value)
+                        
+                    }
+                }
+            }
+        }
+    },
+
+    series: [{
+        name: 'Consumption Realtime ',
+        data: [data[0].consum,data[1].consum]
+    }] 
+}
+
+);
+  setInterval(function(){
+  $.ajax({
+            url: 'http://localhost:3000/insert/consumptions',
+            type: 'GET',
+            success : function(data) {
+             // var myObj = JSON.parse(this.data);
+                    // myObj[0].room_no
+                    /*for (x in data) {
+                        energy.push(data[x].energy);
+                        enlabel.push(data[x].date);
+                        // console.log(data[x].date.toLocaleDateString("en-US"));
+                    }*/
+                    console.log( data )
+                    first.series[0].setData([data[0].consum,data[1].consum], true);
+                    
+                  }
+                  });
+},3000);
+}
+});
+});
+
+
+ function Rooms(category,value) {
+  var energy = [];
+  var enlabel = [];
+  var roomid;
+ $.ajax({
+             url: 'http://localhost:3000/insert/consumpt/'+category,
+             type: 'GET',
+             success : function(data) {
+               
+              // var myObj = JSON.parse(this.data);
+                     // myObj[0].room_no
+                     for (x in data) {
+                         energy.push(data[x].consum);
+                         enlabel.push(data[x].newdates[0]);
+                         
+                     }
+            console.log(category);
+            console.log(typeof category);         
+                       
+     Highcharts.chart(category.toString(), {
+     chart: {
+         type: 'line'
+     },
+     title: {
+         text: 'Consumption of Room'
+     },
+     subtitle: {
+         text: 'Source: Current Sensors'
+     },
+     xAxis: {
+         categories: enlabel,
+         crosshair: true
+     },
+     yAxis: {
+         min: 0,
+         title: {
+             text: 'Energy (Joules)'
+         }
+     },
+     tooltip: {
+         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+             '<td style="padding:0"><b>{point.y:.1f} Joules</b></td></tr>',
+         footerFormat: '</table>',
+         shared: true,
+         useHTML: true
+     },
+     plotOptions: {
+         column: {
+             pointPadding: 0.2,
+             borderWidth: 0
+         }
+     },
+     series: [  {
+         name: 'Room ' + category,
+         data: energy
+ 
+     }]
+ });
+             }
+     });}
+// var myMonth = document.getElementById("month");
+// myMonth.onchange = function(){
+//   $.ajax({
+//              url: 'http://localhost:3000/insert/consumpt/'+myMonth.value,
+//              type: 'GET',
+//              success : function(data) {
+               
+//               // var myObj = JSON.parse(this.data);
+//                      // myObj[0].room_no
+//                      for (x in data) {
+//                          energy.push(data[x].energy);
+//                          enlabel.push(data[x].date);
+                         
+//                      }
+//                      console.log('http://localhost:3000/insert/consumpt/'+myMonth.value);
+// }
+// })}
+
+var roomg = function (category,value) {
+  var energy = [];
+  var enlabel = [];
+  var roomid;
+  $.ajax({
+             url: 'http://localhost:3000/insert/consumpt/'+category,
+             type: 'GET',
+             success : function(data) {
+               
+              // var myObj = JSON.parse(this.data);
+                     // myObj[0].room_no
+                     for (x in data) {
+                         energy.push(data[x].consum);
+                         enlabel.push(data[x].newdates[0]);
+                         
+                     }
+                    
+                    comp.addSeries({                        
+                            name: category,
+                            data: energy
+                        }, true);
+                     comp.xAxis[0].update({categories:enlabel}, true);
+                   }
+                   
+                 });
+}
+</script>
+</body>
+
+</html>

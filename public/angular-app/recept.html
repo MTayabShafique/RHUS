@@ -1,0 +1,25 @@
+<table class="table table-striped"><tr>
+	<th id="hello">First Name</th>
+	<th>Last Name</th>
+	<th>CNIC</th>
+	<th>Phone</th>
+	<th>Address</th>
+	<th>Shift Start</th>
+	<th>Shift End</th>
+	<th>Actions</th>
+</tr>
+
+<tr ng-repeat = "rec in vm.reception">
+	<td>{{ rec.first_name }}</td>
+	<td>{{ rec.last_name }}</td>
+	<td>{{ rec.CNIC }} </td>
+	<td>{{ rec.phone }} </td>
+	<td>{{ rec.address }} </td>
+	<td>{{ rec.start }} </td>
+	<td>{{ rec.end }} </td>
+	<td><a ng-href="#!update/{{rec.CNIC}}" class="btn btn-primary"></a></td>
+</tr>
+
+</table>
+
+

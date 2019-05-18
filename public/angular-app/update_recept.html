@@ -1,0 +1,61 @@
+<form name="rec.updateform" ng-submit="rec.updaterecep" action="/insert/recept_update" method="POST">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleInputName">First Name</label>
+                  <input class="form-control" name="first_name" ng-model="vm.first_name" type="text" ng-value="rec.first_name" placeholder="Enter first name">
+            </div>
+            <div class="col-md-6">
+                  <label for="exampleInputLastName">Last Name</label>
+                  <input class="form-control"  name="last_name" ng-model="vm.last_name" type="text" ng-value="rec.last_name" placeholder="Enter last name">
+            </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row"><div class="col-md-6">
+              <label for="exampleInputEmail1">Email Address</label>
+              <input class="form-control"  name="email" ng-model="vm.email" type="email" ng-value="rec.email"  placeholder="Enter email">
+            </div>
+            <div class="col-md-6">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input class="form-control" name="password" ng-model="vm.password" type="text" ng-value= "rec.password" placeholder="Password">
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleConfirmPassword">Confirm Password</label>
+                  <input class="form-control"  type="password" ng-value= "rec.password" ng-model="vm.cpassword" placeholder="Confirm password">
+                </div>
+              </div>
+            </div></div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleCNIC">CNIC</label>
+                  <input class="form-control"  name="CNIC" type="text" ng-value= "rec.CNIC" ng-model="vm.CNIC"  placeholder="Enter CNIC No." disabled="true">
+            </div>
+            <div class="col-md-6">
+                  <label for="examplePhoneNO">Phone No.</label>
+                  <input class="form-control"  name="phone" type="tel" ng-value= "rec.phone" ng-model="vm.phone"  placeholder="Enter Phone No.">
+            </div></div>
+            </div>
+            <div class="form-group">
+              <div class="form-row"><div class="col-md-6">
+                  <label for="exampleAddress">Address</label>
+                  <input class="form-control" name="address" ng-model="vm.address" ng-value= "rec.address" type="text"  placeholder="Enter Address">
+            </div>
+            <div class="col-md-6">
+                  <label for="exampleshiftStart">Shift Start</label>
+                  <input class="form-control" name="start" ng-model="vm.start" ng-value= "rec.start" type="time" placeholder="Enter last name">
+            </div></div>
+            </div>
+            <div class="form-row">
+                  <label for="exampleShiftEnd">Shift End</label>
+                  <input class="form-control" name="end" ng-model="vm.end" type="time" ng-value= "rec.end" placeholder="Enter last name">
+            </div>
+            <br>
+              <input type="submit" class="btn btn-primary btn-block " value="Submit" />
+            <br>
+</form>

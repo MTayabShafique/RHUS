@@ -1,0 +1,16 @@
+<form novalidate name="cus.custom" ng-submit="addform()" >
+            
+                  <label for="exampleInputName">First Name</label>
+                  <input class="form-control" name="first_name" ng-model="cus.first_name" ng-pattern="/^[a-zA-Z]+$/" ng-minlength="2" ng-maxlength="20" type="text"placeholder="Enter first name" required="true">
+                  <div ng-show="cus.custom.first_name.$dirty && cus.custom.first_name.$invalid && isSubmitted">
+                    data ins this field in not valid
+                  </div>
+            
+                  <label for="exampleInputLastName">Last Name</label>
+                  <input class="form-control"  name="last_name"  ng-model="cus.last_name" type="email"placeholder="Enter last name" required="true">
+                  <div ng-show="cus.custom.last_name.$dirty && cus.custom.last_name.$invalid && isSubmitted">
+                    data ins this field in not valid
+                  </div>
+            
+<button type="submit" class="btn btn-success">Submitt</button>
+          </form>

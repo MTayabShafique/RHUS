@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learn Bootstrap</title>
+	<link rel="stylesheet" href="css/Bootstrap.css">
+	<script   src="js/jquery.js"></script>
+	<script   src="js/bootstrap.js"></script>
+
+
+<script>
+$(document).ready(
+	function()
+{
+$('[data-toggle="tooltip"]').tooltip();
+$('[data-toggle="popover"]').popover();
+
+
+
+}           );
+
+</script>
+
+
+</head>
+<body >
+
+
+<div class="container">
+
+<br><br><br><br>
+<a href="#" data-toggle="tooltip" data-placement="bottom" title="the link">That is google</a>
+
+
+<br><br><br><br>
+
+<a href="#" data-toggle="popover" data-placement="bottom" title="This is popover" data-content="The popover Contenet. i love u">the Pop over Clicl</a>
+
+<br><br><br><br>
+<a href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="This is popover" data-content="The popover Contenet. i love u">the Pop over Click</a>
+</div>
+</body>
+</html>
+

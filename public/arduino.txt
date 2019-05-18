@@ -1,0 +1,289 @@
+
+void setup() { 
+ 
+Serial.begin(9600);
+pinMode(5,OUTPUT);   
+} 
+ 
+int i=0; 
+/// 
+void loop() 
+ {       
+ float   volt=0;
+ int cur_s1=0; 
+ float cur1=0; 
+ float ct_s=0; 
+ 
+volt=0;
+
+for(i=0;i<40;i++)   {  
+
+     /*volt=volt+analogRead(A4);*/
+cur_s1=analogRead(A0);
+delayMicroseconds(100);
+cur_s1=abs(512-cur_s1);       
+ct_s=cur_s1/204.8;       
+ct_s=ct_s*ct_s;       
+cur1= cur1 +ct_s;       
+delayMicroseconds(900);     } 
+ 
+  cur1=(cur1/40);   
+  cur1=sqrt(cur1)/0.1;   
+  if(cur1<0.2)   
+  { 
+      cur1=0;   
+  } 
+ 
+ 
+  Serial.print("Current,");
+  Serial.print(cur1);
+  Serial.print(",POWER,");
+  Serial.print(cur1*220);
+  S erial.println(",WATT");   
+  unsigned int duty=(float)((cur1)/20)*255; 
+ 
+  delay(1000); }
+
+  #include"Servo.h"
+#define MAX_SIGNAL 1500
+#define MIN_SIGNAL 900
+#define MOTOR_PIN 5
+Servo m1;
+float b;
+float i;
+void setup()
+{
+ Serial.begin(9600);
+ m1.attach(MOTOR_PIN);
+ m1.write(MAX_SIGNAL);
+ delay (5000);
+ m1.write(MIN_SIGNAL);
+  delay (5000);
+i=MIN_SIGNAL;
+
+}
+
+void loop()
+{
+ i=i+10;
+ m1.writeMicroseconds(i);
+b=analogRead(8);
+Serial.println(b);
+delay(1000);
+}
+
+
+this is the code.
+#include"Servo.h"
+#define MAX_SIGNAL 1500
+#define MIN_SIGNAL 900
+#define MOTOR_PIN 5
+Servo m1;
+float b;
+float i;
+void setup()
+{
+ Serial.begin(9600);
+ m1.attach(MOTOR_PIN);
+ m1.write(MAX_SIGNAL);
+ delay (5000);
+ m1.write(MIN_SIGNAL);
+  delay (5000);
+i=MIN_SIGNAL;
+
+}
+
+void loop()
+{
+ i=i+10;
+ m1.writeMicroseconds(i);
+b=analogRead(8);
+Serial.println(b);
+delay(1000);
+}
+ACS712 Arduino Code
+float vcc = 0;
+
+void setup() {
+Serial.begin(9600);
+}
+
+void loop() {
+vcc = readVcc() / 1000.0;
+Serial.print(“Vcc: “);
+Serial.print(vcc);
+
+long average = 0;
+for (int i = 0; i < 100; i++) {
+average = average + analogRead(A0);
+delay(1);
+}
+average = average / 100;
+
+float sensorValue = average * (5.0 / 1023.0);
+Serial.print(” sense: “);
+Serial.print(sensorValue, 3);
+
+float acoffset = vcc / 2.0;
+Serial.print(” offst: “);
+Serial.print(acoffset, 3);
+
+float sensitivity = 0.185 * (vcc / 5.0);
+Serial.print(” sensi: “);
+Serial.print(sensitivity, 4);
+
+float amps = (sensorValue – acoffset) / sensitivity;
+Serial.print(” Amperes: “);
+Serial.print (amps);
+Serial.println(“…”);
+delay(1000);
+}
+
+long readVcc() {
+// Read 1.1V reference against AVcc
+// set the reference to Vcc and the measurement to the internal 1.1V reference
+#if defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+ADMUX = _BV(REFS0) | _BV(MUX4) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
+#elif defined (__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
+ADMUX = _BV(MUX5) | _BV(MUX0);
+#elif defined (__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
+ADMUX = _BV(MUX3) | _BV(MUX2);
+#else
+ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
+#endif
+
+delay(2); // Wait for Vref to settle
+ADCSRA |= _BV(ADSC); // Start conversion
+while (bit_is_set(ADCSRA, ADSC)); // measuring
+
+uint8_t low  = ADCL; // must read ADCL first – it then locks ADCH
+uint8_t high = ADCH; // unlocks both
+
+long result = (high << 8) | low;
+
+result = 1125300L / result; // Calculate Vcc (in mV); 1125300 = 1.1*1023*1000
+return result; // Vcc in millivolts
+}
+
+#define CURRENT_SENSOR A0  // Define Analog input pin that sensor is attached
+ 
+float amplitude_current;      // Float amplitude current
+float effective_value;       // Float effective current
+ 
+void setup()
+{
+    Serial.begin(9600);
+    pins_init();
+}
+void loop()
+{
+    int sensor_max;
+    sensor_max = getMaxValue();
+    Serial.print("sensor_max = ");
+    Serial.println(sensor_max);
+    
+    //the VCC on the Arduino interface of the sensor is 5v
+    
+    amplitude_current=(float)(sensor_max-512)/1024*5/185*1000000; // for 5A mode,you need to modify this with 20 A and 30A mode;
+    effective_value=amplitude_current/1.414;
+    
+    //for minimum current=1/1024*5/185*1000000/1.414=18.7(mA)
+    //Only sinusoidal alternating current
+    
+    Serial.println("The amplitude of the current is(in mA)");
+    Serial.println(amplitude_current,1);
+    
+    //Only one number after the decimal point
+    
+    Serial.println("The effective value of the current is(in mA)");
+    Serial.println(effective_value,1);
+}
+void pins_init()
+{
+    pinMode(CURRENT_SENSOR, INPUT);
+}
+/*Function: Sample for 1000ms and get the maximum value from the S pin*/
+
+int getMaxValue()
+{
+    int sensorValue;    //value read from the sensor
+    int sensorMax = 0;
+    uint32_t start_time = millis();
+    while((millis()-start_time) < 1000) //sample for 1000ms
+    {
+        sensorValue = analogRead(CURRENT_SENSOR);
+        if (sensorValue > sensorMax)
+        {
+            /*record the maximum sensor value*/
+            
+            sensorMax = sensorValue;
+        }
+    }
+    return sensorMax;
+}
+
+//for Dc voltage
+void setup() {
+ 
+  Serial.begin(9600);
+}
+ 
+void loop() {
+ 
+  float average = 0;
+  for(int i = 0; i < 1000; i++) {
+    average = average + (.0264 * analogRead(A0) -13.51) / 1000;
+	
+	//5A mode, if 20A or 30A mode, need to modify this formula to 
+    //(.19 * analogRead(A0) -25) for 20A mode and 
+    //(.044 * analogRead(A0) -3.78) for 30A mode
+	
+    delay(1);
+  }
+  Serial.println(average);  
+}
+
+import serial
+ser = serial.Serial('/dev/ttyAMA0', 9600)
+ser.open()
+
+ser.write('testing')
+try:
+  while 1:
+    response = ser.readline()
+    print response
+except KeyboardInterrupt:
+  ser.close()
+
+  void setup() {
+Serial.begin(9600);
+}
+
+void loop() {
+if (Serial.available() > 0) {
+int incoming = Serial.read();
+Serial.print("character recieved:" )
+Serial.print(incoming, DEC);
+}
+}
+import serial
+
+ser = serial.Serial(
+  port='/dev/ttyAMA0',
+  baudrate = 9600,
+  parity=serial.PARITY_NONE,
+  stopbits=serial.STOPBITS_ONE,
+  bytesize=serial.EIGHTBITS,
+  timeout=1
+)
+
+print "Serial is open: " + str(ser.isOpen())
+
+print "Now Writing"
+ser.write("This is a test")
+
+print "Did write, now read"
+x = ser.readline()
+print "got '" + x + "'"
+
+ser.close()

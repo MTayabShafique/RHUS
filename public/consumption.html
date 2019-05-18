@@ -1,0 +1,231 @@
+<!DOCTYPE html >
+<html np-app = "consumpmodule">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="keywords" content="text/html; charset=utf-8" />
+<title>Consumption</title>
+<link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script type="text/javascript" src="node_modules/chartjs/chart.js"></script>
+  <script   src="js/jquery.js"></script>
+  <script   src="js/bootstrap.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <style></style>
+<script type="text/javascript">
+  
+
+
+</script>
+</head>
+
+<body  >
+<nav class="navbar navbar-inverse navbar-fixed-top ">
+  <div class="container-fluid">
+<div class="navbar-header"> 
+<a href="#" class="navbar-brand">RFID Based Utility System for Hotels</a>
+</div>
+
+<ul class="nav navbar-nav navbar-left">
+ 
+  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span> </a>
+  <ul class="dropdown-menu">
+  <li><a href="Aplicant_info.php">Applicant Info</a></li>
+  </ul> 
+  </li>
+</ul> </div>
+</nav>
+
+<div class="row">
+    	
+        <div class="main " >
+          <div class="container">
+            <div class="jum jumbotron  ">
+            <br />
+            <div ng-controller = ""></div>
+              <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+              <canvas id="myChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+  <script src="node_modules/angular/angular.js"></script> 
+  <script src="node_modules/angular-route/angular-route.js"></script>  
+  <script src="angular-app/app.js"></script>
+  <script src="angular-app/consump.controller.js"></script>
+
+
+
+<script>
+
+var energy = [];
+  var enlabel = [];
+  var roomid;
+  $( document ).ready(function() {
+    $.ajax({
+            url: 'http://localhost:3000/insert/consump',
+            type: 'GET',
+            success : function(data) {
+             // var myObj = JSON.parse(this.data);
+                    // myObj[0].room_no
+                    for (x in data) {
+                        energy.push(data[x].energy);
+                        enlabel.push(data[x].date);
+                    }
+                      console.log(energy);
+                       console.log(energy);
+    Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Monthly Average Rainfall'
+    },
+    subtitle: {
+        text: 'Source: WorldClimate.com'
+    },
+    xAxis: {
+        categories: enlabel,
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Energy (Joules)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} Joules</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [  {
+        name: 'Room 0',
+        data: energy
+
+    }]
+});
+            }
+    });
+
+
+});
+// Highcharts.chart('container', {
+//     chart: {
+//         type: 'column'
+//     },
+//     title: {
+//         text: 'Monthly Average Rainfall'
+//     },
+//     subtitle: {
+//         text: 'Source: WorldClimate.com'
+//     },
+//     xAxis: {
+//         categories: [
+//             'Jan',
+//             'Feb',
+//             'Mar',
+//             'Apr',
+//             'May',
+//             'Jun',
+//             'Jul',
+//             'Aug',
+//             'Sep',
+//             'Oct',
+//             'Nov',
+//             'Dec'
+//         ],
+//         crosshair: true
+//     },
+//     yAxis: {
+//         min: 0,
+//         title: {
+//             text: 'Rainfall (mm)'
+//         }
+//     },
+//     tooltip: {
+//         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+//         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//             '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+//         footerFormat: '</table>',
+//         shared: true,
+//         useHTML: true
+//     },
+//     plotOptions: {
+//         column: {
+//             pointPadding: 0.2,
+//             borderWidth: 0
+//         }
+//     },
+//     series: [  {
+//         name: 'Room 0',
+//         data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+//     }]
+// });
+
+// var myChart= document.getElementById('myChart').getContext('2d');
+// var consump = new Chart(myChart, {
+//   type: 'bar',
+//   data: {
+//     labels:['room1','room2','room3','room4'],
+//     datasets:[
+//     {
+//      label : 'consumptions',
+//      data : [
+//      899,
+//      892,
+//      323,
+//      234
+//      ]
+//     }
+//     ]
+//   },
+//   options : {
+//     scales: {
+//         xAxes: [{
+//             gridLines: {
+//                 offsetGridLines: true
+//             }
+//         }]
+//     }
+// }
+
+// })
+/*Highcharts.chart('container', {
+      title: {
+        text: 'Temperature Data'
+      },
+
+      xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ]
+      },
+
+      series: [{
+        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+      }]
+    });*/
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
