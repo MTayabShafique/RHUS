@@ -3,7 +3,7 @@ RFID – based Utility System for Hotels is a system to monitor electricity cons
 # Results
 * Login page of the System
 <p>
-     <img src="https://github.com/MTayabShafique/RHUS/blob/master/views/Signin.png" height="854" />
+     <img src="https://github.com/MTayabShafique/RHUS/blob/master/views/Signin.png" />
 </p>
 
 * Manager Dashboard/ Monitor Electricity
