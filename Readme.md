@@ -36,6 +36,11 @@ RFID – Based Energy Utility System for Hotels is a system to monitor electrici
      <img src="https://github.com/MTayabShafique/RHUS/blob/master/views/view customers.png" />
 </p>
 
+# Setup
+<img src="https://github.com/MTayabShafique/RHUS/blob/master/views/1.jpg" />
+
+<img src="https://github.com/MTayabShafique/RHUS/blob/master/views/2.jpg" />
+
 # Requirements
 For this project, you need
  ## Hardware
